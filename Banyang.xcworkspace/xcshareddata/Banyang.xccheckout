@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C5CE1E07-D1B1-4C82-93E7-A1661FD2F4EA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Banyang</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>31DCC5F8C3C750AFC3CF5D532C0F8434E83C9D96</key>
+		<string>https://github.com/li125434104/Banyang.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Banyang.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>31DCC5F8C3C750AFC3CF5D532C0F8434E83C9D96</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/li125434104/Banyang.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>31DCC5F8C3C750AFC3CF5D532C0F8434E83C9D96</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>31DCC5F8C3C750AFC3CF5D532C0F8434E83C9D96</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Banyang</string>
+		</dict>
+	</array>
+</dict>
+</plist>

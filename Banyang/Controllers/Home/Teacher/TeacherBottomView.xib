@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TeacherBottomView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFm-m9-fiu">
+                    <rect key="frame" x="240" y="10" width="60" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.67951146569999998" blue="0.14393651960000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="0h1-hf-S9q"/>
+                        <constraint firstAttribute="height" constant="30" id="UzA-e1-ad7"/>
+                    </constraints>
+                    <state key="normal" title="报名">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="payButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="gvm-Fz-9nl"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFs-D5-MS5">
+                    <rect key="frame" x="50" y="14" width="100" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="GDy-Xc-wnr"/>
+                        <constraint firstAttribute="height" constant="21" id="RIj-DX-RHP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxa-Xs-kBE">
+                    <rect key="frame" x="160" y="10" width="60" height="30"/>
+                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="沟通">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="IMButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="G3z-jx-A13"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.33677825696021907" green="0.068410825888627722" blue="0.57502480158730163" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="HFm-m9-fiu" firstAttribute="leading" secondItem="kxa-Xs-kBE" secondAttribute="trailing" constant="20" id="2Wc-wh-HMJ"/>
+                <constraint firstItem="rFs-D5-MS5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="2fa-D8-dDi"/>
+                <constraint firstAttribute="bottom" secondItem="HFm-m9-fiu" secondAttribute="bottom" constant="9" id="3u9-N7-vQV"/>
+                <constraint firstItem="rFs-D5-MS5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="50" id="Mln-sG-vyi"/>
+                <constraint firstItem="kxa-Xs-kBE" firstAttribute="height" secondItem="HFm-m9-fiu" secondAttribute="height" id="Wxe-eH-3i4"/>
+                <constraint firstItem="kxa-Xs-kBE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gJL-EQ-46i"/>
+                <constraint firstAttribute="trailing" secondItem="HFm-m9-fiu" secondAttribute="trailing" constant="20" id="kmG-Jv-Rqk"/>
+                <constraint firstAttribute="bottom" secondItem="kxa-Xs-kBE" secondAttribute="bottom" constant="9" id="lu6-qm-NhS"/>
+                <constraint firstItem="kxa-Xs-kBE" firstAttribute="width" secondItem="HFm-m9-fiu" secondAttribute="width" id="nEk-HQ-etp"/>
+                <constraint firstItem="HFm-m9-fiu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="pNW-7J-l8w"/>
+                <constraint firstAttribute="bottom" secondItem="rFs-D5-MS5" secondAttribute="bottom" constant="14" id="zh6-vz-GPz"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="IMButton" destination="kxa-Xs-kBE" id="skN-yt-ClD"/>
+                <outlet property="moneyLabel" destination="rFs-D5-MS5" id="WYI-No-pNu"/>
+                <outlet property="payButton" destination="HFm-m9-fiu" id="BgC-ru-8DU"/>
+            </connections>
+            <point key="canvasLocation" x="276" y="259.5"/>
+        </view>
+    </objects>
+</document>

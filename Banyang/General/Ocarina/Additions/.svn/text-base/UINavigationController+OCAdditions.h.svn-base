@@ -1,0 +1,20 @@
+//
+//  UINavigationController+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-9-25.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UINavigationController (OCAdditions)
+
+- (void)myFadePushViewController:(UIViewController *)vc;
+- (void)myFadePopViewController;
+
+- (void)replaceVCAtIndex:(int)index withVC:(UIViewController *)vc animated:(BOOL)animated;
+- (void)replaceTopViewController:(UIViewController *)vc animated:(BOOL)animated;
+- (void)removeViewControllerAtIndex:(int)index;
+
+@end

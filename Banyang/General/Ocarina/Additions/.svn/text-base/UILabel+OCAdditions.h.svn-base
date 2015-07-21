@@ -1,0 +1,19 @@
+//
+//  UILabel+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-9-22.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UILabel (OCAdditions)
+
++ (UILabel *)labelWithText:(NSString *)text font:(UIFont *)font;
+
+- (CGSize)sizeWithText:(NSString *)text constrainedToWidth:(BOOL)flag;
+
+- (void)setText:(NSString *)text followbyViews:(NSArray *)views padding:(CGFloat)padding maxTotalWidth:(CGFloat)maxWidth;
+
+@end

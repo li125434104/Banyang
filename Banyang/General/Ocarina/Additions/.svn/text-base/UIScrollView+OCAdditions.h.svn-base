@@ -1,0 +1,29 @@
+//
+//  UIScrollView+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-11-25.
+//  Copyright (c) 2013年 KongKong. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIScrollView (OCAdditions)
+
+@property (nonatomic, assign) CGFloat topInset;
+@property (nonatomic, assign) CGFloat bottomInset;
+@property (nonatomic, assign) CGFloat leftInset;
+@property (nonatomic, assign) CGFloat rightInset;
+
+@property (nonatomic, assign) CGFloat indicatorTopInset;
+@property (nonatomic, assign) CGFloat indicatorBottomInset;
+@property (nonatomic, assign) CGFloat indicatorLeftInset;
+@property (nonatomic, assign) CGFloat indicatorRightInset;
+
+- (void)contentInsetsAdd:(UIEdgeInsets)deltaInsets;
+
+- (void)enumerateSubviewsWithoutIndicator:(void(^)(UIView *subview))block;
+- (void)makeContentSizeContainAllSubviewsPlusHeight:(CGFloat)height;
+- (void)makeContentSizeContainPages:(int)pages;
+
+@end

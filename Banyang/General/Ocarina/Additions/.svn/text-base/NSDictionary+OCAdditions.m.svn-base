@@ -1,0 +1,40 @@
+//
+//  NSDictionary+OCAdditions.m
+//  WeiXingZuo
+//
+//  Created by giant on 13-8-10.
+//
+//
+
+#import "NSDictionary+OCAdditions.h"
+
+@implementation NSDictionary (OCAdditions)
+
+- (id)myValueForKey:(NSString *)key {
+    id object = [self objectForKey:key];
+    if (object == [NSNull null]) object = nil;
+    return object;
+}
+
+- (int)intValueForKey:(NSString *)key {
+    return [[self myValueForKey:key] intValue];
+}
+
+- (float)floatValueForKey:(NSString *)key {
+    return [[self myValueForKey:key] floatValue];
+}
+
+- (double)doubleValueForKey:(NSString *)key {
+    return [[self myValueForKey:key] doubleValue];
+}
+
+- (BOOL)boolValueForKey:(NSString *)key {
+    return [[self myValueForKey:key] boolValue];
+}
+
+- (NSString *)stringValueForKey:(NSString *)key {
+    NSString *value = [[self myValueForKey:key] description];
+    return value.length? value: nil;
+}
+
+@end

@@ -1,0 +1,136 @@
+//
+//  UIScrollView+OCAdditions.m
+//  WeiXingZuo
+//
+//  Created by CAI on 13-11-25.
+//  Copyright (c) 2013年 KongKong. All rights reserved.
+//
+
+#import "UIScrollView+OCAdditions.h"
+
+@implementation UIScrollView (OCAdditions)
+
+- (CGFloat)topInset {
+    return self.contentInset.top;
+}
+
+- (void)setTopInset:(CGFloat)topInset {
+    UIEdgeInsets insets = self.contentInset;
+    insets.top = topInset;
+    self.contentInset = insets;
+}
+
+- (CGFloat)bottomInset {
+    return self.contentInset.bottom;
+}
+
+- (void)setBottomInset:(CGFloat)bottomInset {
+    UIEdgeInsets insets = self.contentInset;
+    insets.bottom = bottomInset;
+    self.contentInset = insets;
+}
+
+- (CGFloat)leftInset {
+    return self.contentInset.left;
+}
+
+- (void)setLeftInset:(CGFloat)leftInset {
+    UIEdgeInsets insets = self.contentInset;
+    insets.left = leftInset;
+    self.contentInset = insets;
+}
+
+- (CGFloat)rightInset {
+    return self.contentInset.right;
+}
+
+- (void)setRightInset:(CGFloat)rightInset {
+    UIEdgeInsets insets = self.contentInset;
+    insets.right = rightInset;
+    self.contentInset = insets;
+}
+
+- (CGFloat)indicatorTopInset {
+    return self.scrollIndicatorInsets.top;
+}
+
+- (void)setIndicatorTopInset:(CGFloat)indicatorTopInset {
+    UIEdgeInsets insets = self.scrollIndicatorInsets;
+    insets.top = indicatorTopInset;
+    self.scrollIndicatorInsets = insets;
+}
+
+- (CGFloat)indicatorBottomInset {
+    return self.scrollIndicatorInsets.bottom;
+}
+
+- (void)setIndicatorBottomInset:(CGFloat)indicatorBottomInset {
+    UIEdgeInsets insets = self.scrollIndicatorInsets;
+    insets.bottom = indicatorBottomInset;
+    self.scrollIndicatorInsets = insets;
+}
+
+- (CGFloat)indicatorLeftInset {
+    return self.scrollIndicatorInsets.left;
+}
+
+- (void)setIndicatorLeftInset:(CGFloat)indicatorLeftInset {
+    UIEdgeInsets insets = self.scrollIndicatorInsets;
+    insets.left = indicatorLeftInset;
+    self.scrollIndicatorInsets = insets;
+}
+
+- (CGFloat)indicatorRightInset {
+    return self.scrollIndicatorInsets.right;
+}
+
+- (void)setIndicatorRightInset:(CGFloat)indicatorRightInset {
+    UIEdgeInsets insets = self.scrollIndicatorInsets;
+    insets.right = indicatorRightInset;
+    self.scrollIndicatorInsets = insets;
+}
+
+
+- (void)contentInsetsAdd:(UIEdgeInsets)deltaInsets {
+    UIEdgeInsets insets = self.contentInset;
+    insets.top += deltaInsets.top;
+    insets.bottom += deltaInsets.bottom;
+    insets.left += deltaInsets.left;
+    insets.right += deltaInsets.right;
+    
+    self.contentInset = insets;
+}
+
+
+- (void)enumerateSubviewsWithoutIndicator:(void(^)(UIView *subview))block {
+    for (UIView *subview in self.subviews) {
+        if ([subview isKindOfClass:[UIImageView class]]) {
+            int width = subview.bounds.size.width;
+            int height = subview.bounds.size.height;
+            
+            if (width < 10 && height < 10)
+                continue;
+        }
+        
+        block(subview);
+    }
+}
+
+- (void)makeContentSizeContainAllSubviewsPlusHeight:(CGFloat)height {
+    __block CGFloat maxY = 0;
+    
+    [self enumerateSubviewsWithoutIndicator:^(UIView *subview) {
+        CGFloat subviewMaxY = CGRectGetMaxY(subview.frame);
+        if (maxY < subviewMaxY)
+            maxY = subviewMaxY;
+    }];
+
+    self.contentSize = CGSizeMake(self.bounds.size.width, maxY + height);
+}
+
+- (void)makeContentSizeContainPages:(int)pages {
+    CGSize size = self.bounds.size;
+    self.contentSize = CGSizeMake(size.width * pages, size.height);
+}
+
+@end

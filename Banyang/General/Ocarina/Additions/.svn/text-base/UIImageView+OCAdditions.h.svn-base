@@ -1,0 +1,15 @@
+//
+//  UIImageView+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-9-23.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIImageView (OCAdditions)
+
++ (UIImageView *)imageViewWithImageNamed:(NSString *)name;
+
+@end

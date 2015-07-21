@@ -1,0 +1,133 @@
+//
+//  NSString+OCAdditions.m
+//  Biquu
+//
+//  Created by Blue on 14-6-9.
+//
+
+#import <CommonCrypto/CommonDigest.h>
+#import "NSString+OCAdditions.h"
+
+@implementation NSString (OCAdditions)
+
+
++ (NSString *)documentPathWithName:(NSString *)name {
+	static NSString *documentDirectory = nil;
+    
+	if (!documentDirectory) {
+		NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		documentDirectory = [documentDirectories objectAtIndex:0];
+	}
+    
+	return [documentDirectory stringByAppendingPathComponent:name];
+}
+
++ (NSString *)cachesPathWithName:(NSString *)name {
+	static NSString *cachesDirectory = nil;
+    
+	if (!cachesDirectory) {
+		NSArray *cachesDirectories = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+		cachesDirectory = [cachesDirectories objectAtIndex:0];
+	}
+    
+	return [cachesDirectory stringByAppendingPathComponent:name];
+}
+
++ (NSString *)tmpPathWithName:(NSString *)name {
+	static NSString *tmpDirectory = nil;
+    
+	if (!tmpDirectory)
+        tmpDirectory = NSTemporaryDirectory();
+    
+	return [tmpDirectory stringByAppendingPathComponent:name];
+}
+
++ (NSString *)randomString {
+    CFUUIDRef UUIDRef = CFUUIDCreate(nil);
+    CFStringRef UUIDStringRef = CFUUIDCreateString(nil, UUIDRef);
+    
+    NSString *UUIDString = [NSString stringWithString:(__bridge NSString *)UUIDStringRef];
+    
+    CFRelease(UUIDRef);
+    CFRelease(UUIDStringRef);
+    return UUIDString;
+}
+
++ (NSString *)stringWithString:(NSString *)string duplicateCount:(int)count {
+    NSMutableString *finalString = [NSMutableString stringWithString:string];
+    for (int i = 1; i < count; ++i) {
+        [finalString appendString:string];
+    }
+    return finalString;
+}
+
+
+- (NSString *)URLEncoding {
+    CFStringRef newStringRef = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                       (CFStringRef)self,
+                                                                       NULL,
+                                                                       CFSTR("!*'();:@&=+$,/?%#[]"),
+                                                                       kCFStringEncodingUTF8);
+    
+    NSString *newString = [NSString stringWithString:(__bridge NSString *)newStringRef];
+    CFRelease(newStringRef);
+    return newString;
+}
+
+- (NSString *)URLDecoding {
+    CFStringRef newStringRef = CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
+                                                                                       (CFStringRef)self,
+                                                                                       CFSTR(""),
+                                                                                       kCFStringEncodingUTF8);
+    NSString *newString = [NSString stringWithString:(__bridge NSString *)newStringRef];
+    CFRelease(newStringRef);
+    return newString;
+}
+
+- (NSString *)MD5String {
+    const char *cStr = [self UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, strlen(cStr), result);
+    
+    return [[NSString stringWithFormat: @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
+             result[0], result[1], result[2], result[3],
+             result[4], result[5], result[6], result[7],
+             result[8], result[9], result[10], result[11],
+             result[12], result[13], result[14], result[15]
+             ] lowercaseString];
+}
+
+
+- (BOOL)isValidMobileNumber {
+    /**
+     * 手机号码
+     * 移动：134[0-8],135,136,137,138,139,150,151,157,158,159,182,183,187,188
+     * 联通：130,131,132,152,155,156,185,186
+     * 电信：133,1349,153,180,189,181
+     */
+    NSString *mobileRegex = @"^1(3[0-9]|5[0-35-9]|8[01235-9])\\d{8}$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobileRegex];
+    return [predicate evaluateWithObject:self];
+}
+
+- (BOOL)isValidEmail {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [predicate evaluateWithObject:self];
+}
+
+- (NSString *)trimingInSides {
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (NSString *)trimmingInMiddle {
+    NSCharacterSet *whitespaces = [NSCharacterSet whitespaceCharacterSet];
+    NSPredicate *noEmptyStrings = [NSPredicate predicateWithFormat:@"SELF != ''"];
+    NSArray *parts = [self componentsSeparatedByCharactersInSet:whitespaces];
+    NSArray *filteredArray = [parts filteredArrayUsingPredicate:noEmptyStrings];
+    return [filteredArray componentsJoinedByString:@" "];
+}
+
+
+
+@end

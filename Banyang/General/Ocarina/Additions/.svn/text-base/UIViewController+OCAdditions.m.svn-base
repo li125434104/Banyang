@@ -1,0 +1,29 @@
+//
+//  UIViewController+OCAdditions.m
+//  WeiXingZuo
+//
+//  Created by giant on 13-8-12.
+//
+//
+
+#import "UIViewController+OCAdditions.h"
+
+@implementation UIViewController (OCAdditions)
+
+
+- (UIViewController *)presentingVC {
+    if ([self respondsToSelector:@selector(presentingViewController)])
+        return [self presentingViewController];
+    else
+        return [self parentViewController];
+}
+
+- (UIViewController *)presentedVC {
+    if ([self respondsToSelector:@selector(presentedViewController)])
+        return [self presentedViewController];
+    else
+        return [self modalViewController];
+}
+
+
+@end

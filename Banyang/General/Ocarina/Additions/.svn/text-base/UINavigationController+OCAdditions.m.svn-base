@@ -1,0 +1,56 @@
+//
+//  UINavigationController+OCAdditions.m
+//  WeiXingZuo
+//
+//  Created by CAI on 13-9-25.
+//
+//
+
+#import <QuartzCore/QuartzCore.h>
+#import "UINavigationController+OCAdditions.h"
+
+@implementation UINavigationController (OCAdditions)
+
+- (void)transitionWithType:(NSString *)type subtype:(NSString *)subtype {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.3f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = type;
+    transition.subtype = subtype;
+	[self.view.layer addAnimation:transition forKey:nil];
+}
+
+- (void)myFadePushViewController:(UIViewController *)vc {
+    [self transitionWithType:kCATransitionFade subtype:nil];
+    [self pushViewController:vc animated:NO];
+    
+//    [UIView transitionWithView:self.view duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:nil completion:nil];
+}
+
+- (void)myFadePopViewController {
+    [self transitionWithType:kCATransitionFade subtype:nil];
+    [self popViewControllerAnimated:NO];
+}
+
+
+- (void)replaceVCAtIndex:(int)index withVC:(UIViewController *)vc animated:(BOOL)animated {
+    NSMutableArray *vcs = [self.viewControllers mutableCopy];
+    [vcs replaceObjectAtIndex:index withObject:vc];
+    [self setViewControllers:vcs animated:animated];
+}
+
+- (void)replaceTopViewController:(UIViewController *)vc animated:(BOOL)animated {
+    if (self.viewControllers.count)
+        [self replaceVCAtIndex:self.viewControllers.count - 1 withVC:vc animated:animated];
+    else
+        [self pushViewController:vc animated:animated];
+}
+
+- (void)removeViewControllerAtIndex:(int)index {
+    NSMutableArray *vcs = [self.viewControllers mutableCopy];
+    [vcs removeObjectAtIndex:index];
+    [self setViewControllers:vcs animated:NO];
+}
+
+
+@end

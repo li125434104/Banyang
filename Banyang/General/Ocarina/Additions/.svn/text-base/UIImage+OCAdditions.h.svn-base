@@ -1,0 +1,30 @@
+//
+//  UIImage+OCAdditions.h
+//  Ocarina
+//
+//  Created by CAI on 13-6-21.
+//  Copyright (c) 2013年 CAI. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "OCTypes.h"
+
+@interface UIImage (OCAdditions)
+
++ (UIImage *)uncacheImageNamed:(NSString *)name;
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
++ (UIImage *)imageWithSize:(CGSize)size drawingBlock:(OCSimpleBlock)drawingBlock;
+
+- (UIImage *)resizableWithCapInsets:(UIEdgeInsets)capInsets;
+- (UIImage *)resizableWithCap:(CGFloat)cap;
+
+- (UIImage *)imageWithScale:(CGFloat)scale;
+- (UIImage *)imageWithRadius:(CGFloat)radius;
+- (UIImage *)imageInRect:(CGRect)rect;
+- (UIImage *)imageInPath:(UIBezierPath *)path;
+
+- (UIImage *)scaleToSize:(CGSize)size;
+- (UIImage *)scaleToRatio:(CGFloat)ratio;
+- (UIImage *)scaleAspectToSize:(CGSize)size;
+
+@end

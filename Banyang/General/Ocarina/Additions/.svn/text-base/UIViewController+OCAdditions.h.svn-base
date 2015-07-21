@@ -1,0 +1,16 @@
+//
+//  UIViewController+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by giant on 13-8-12.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface UIViewController (OCAdditions)
+
+- (UIViewController *)presentedVC;
+- (UIViewController *)presentingVC;
+
+@end

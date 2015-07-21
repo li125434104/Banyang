@@ -1,0 +1,21 @@
+//
+//  Ocarina.m
+//  Ocarina
+//
+//  Created by giant on 13-6-21.
+//  Copyright (c) 2013年 CAI. All rights reserved.
+//
+
+#import "Ocarina.h"
+
+void OCLogPrivate(NSString *format, ...) {
+    va_list args;
+    va_start(args, format);
+    NSString *msg = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    printf("%s\n", [msg UTF8String]);
+}
+
+
+
+

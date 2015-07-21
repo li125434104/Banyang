@@ -1,0 +1,25 @@
+//
+//  CIImage+OCAdditions.h
+//  Ocarina
+//
+//  Created by giant on 13-7-7.
+//  Copyright (c) 2013年 CAI. All rights reserved.
+//
+
+#define CIIMAGE_ADDITIONS_ENABLED   0
+
+#if CIIMAGE_ADDITIONS_ENABLED
+
+#import <CoreImage/CoreImage.h>
+#import <ImageIO/ImageIO.h>
+
+
+@interface CIImage (OCAdditions)
+
+- (int)orientation;
+- (UIImageOrientation)imageOrientation;
+
+@end
+
+#endif
+

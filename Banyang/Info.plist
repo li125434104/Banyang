@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.testjw.app.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>com.$(PRODUCT_NAME:rfc1034identifier).ldfs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -15,26 +15,41 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>alisdkdemo</string>
+			</array>
+			<key>partner</key>
+			<string>2088011539235988</string>
+			<key>private_key</key>
+			<string>MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANkMTTiA9TosjPM2bj8BhTTh+ECJGdtgqmeTMdvw3QjvH/jcVJDcdGnEF2zVEGODjTAgL/dP1AmbYkEi+QgcxMpHnvV9LDeltYNulFyAJILLSQhht6NfFIlxCSUJcTm1equNH0N1N8Rd9/htg26JX3tUDjIQZSlxPOLVr3hYKWvVAgMBAAECgYAxt6OoocGKhdHzlDBEtnBw4KIhBkap/caK2yi8nLvE5CGKu82TMSxpXcWP5G5QnT2mHHlgSSTk3nbvPLeWqCBbWW8U+DexDR5h9CIaOP+OKj61G3OWVsGM8TvhSugpFU3NZ98aNL417T763DDjniToMZHQhZ8BmRJvZXuDWh0ssQJBAPFmQ0CTX3g2JPRg8HinlwwfpOg8Vud+LF63dcOiLycXsHIneX7zvwHvdKDRtotdbPaQ6byljdEYv/TlvpihPVMCQQDmLP2w9KLj6AWwxQO/j+XrAdYro8lBXFH5RW597CsADAhPWJ1amT2TVnq91Ahc0Fubdb5X/FR6n7qD1WAobuU3AkEAznkwdrBWzSRKkXfE1v5JVMZQL49EqbYiz1TN9mnnOOGrOsiGw85KBqbAs7kMEMH1LCQguAlGdp1bumUzk6r+HwJAb9D5aOZe3zJO2WHMAVpJShH5VffaA+tyUxLcq0V4Wix+OPWGc4Wv+Qxw0hjX+yao6euYDSwiafOAaxzT+rBsnwJBAJ+6y609sYGL/0MIF2yFu9qyeUlF4qsn5W+wf7KHvFwaOnAYcdJJZ3A7AWSOTQqh4RzxL6nMUrGD9s/8SKWZU64=</string>
+			<key>seller</key>
+			<string>2088011539235988</string>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

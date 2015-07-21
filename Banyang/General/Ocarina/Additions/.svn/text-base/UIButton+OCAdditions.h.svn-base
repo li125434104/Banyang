@@ -1,0 +1,26 @@
+//
+//  UIButton+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-9-23.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIButton (OCAdditions)
+
+@property (nonatomic, strong) NSString *normalTitle;
+@property (nonatomic, strong) UIColor *normalTitleColor;
+@property (nonatomic, strong) UIImage *normalImage;
+@property (nonatomic, strong) UIImage *normalBackgroundImage;
+@property (nonatomic, strong) UIFont *titleFont;
+
++ (id)buttonWithImage:(UIImage *)image;
++ (id)buttonWithImageNamed:(NSString *)name target:(id)target action:(SEL)action;
++ (id)buttonWithBackgroundImage:(UIImage *)image;
++ (id)buttonWithBackgroundImageNamed:(NSString *)name target:(id)target action:(SEL)action;
+
++ (id)buttonWithImageNamed:(NSString *)name title:(NSString *)title;
+
+@end

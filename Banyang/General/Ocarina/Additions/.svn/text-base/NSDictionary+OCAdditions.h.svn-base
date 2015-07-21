@@ -1,0 +1,20 @@
+//
+//  NSDictionary+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by giant on 13-8-10.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+@interface NSDictionary (OCAdditions)
+
+- (id)myValueForKey:(NSString *)key;
+- (int)intValueForKey:(NSString *)key;
+- (double)doubleValueForKey:(NSString *)key;
+- (float)floatValueForKey:(NSString *)key;
+- (BOOL)boolValueForKey:(NSString *)key;
+- (NSString *)stringValueForKey:(NSString *)key;
+
+@end

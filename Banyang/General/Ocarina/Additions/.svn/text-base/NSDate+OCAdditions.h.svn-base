@@ -1,0 +1,43 @@
+//
+//  NSDate+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-12-4.
+//  Copyright (c) 2013年 KongKong. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+#define SECS_PER_MINUTE 60
+#define SECS_PER_HOUR   (60 * 60)
+#define SECS_PER_DAY    (SECS_PER_HOUR * 24)
+
+#define STD_DATE_FORMAT             @"yyyy-MM-dd"
+#define STD_TIME_FORMAT             @"HH:mm:ss"
+#define STD_FORMAT                  @"yyyy-MM-dd HH:mm:ss"
+#define STD_FORMAT_WITH_TIMEZONE    @"yyyy-MM-dd HH:mm:ss zzzz"
+
+
+@interface NSDate (OCAdditions)
+
++ (NSDate *)dateFromString:(NSString *)string format:(NSString *)format;
++ (NSDate *)dateWithYear:(int)year month:(int)month day:(int)day hour:(int)hour minute:(int)minute second:(int)second;
++ (NSDate *)dateWithYear:(int)year month:(int)month weekday:(int)weekday weekdayOrdinal:(int)weekdayOrdinal;
+
+- (int)weekday;
+- (int)numberOfDaysThisMonth;
+
+- (NSDate *)dateForZeroHour;
+- (NSDate *)dateForZeroHourByAddingDays:(int)days
+                                  hours:(int)hours
+                                minutes:(int)minutes
+                                seconds:(int)seconds;
+
+- (NSString *)dateStringWithFormat:(NSString *)format;
+- (NSString *)localizeDescription;
+- (NSString *)briefDescriptionTillNow;
+
+- (NSDateComponents *)diffComponents:(NSCalendarUnit)unitFlags fromDate:(NSDate *)date;
+- (int)diffDaysFromDate:(NSDate *)date;
+
+@end

@@ -1,0 +1,117 @@
+//
+//  NSDate+OCAdditions.m
+//  WeiXingZuo
+//
+//  Created by CAI on 13-12-4.
+//  Copyright (c) 2013年 KongKong. All rights reserved.
+//
+
+#import "NSDate+OCAdditions.h"
+
+
+static NSDateFormatter *s_dateFormatter = nil;
+
+@implementation NSDate (OCAdditions)
+
++ (NSDate *)dateWithYear:(int)year month:(int)month day:(int)day hour:(int)hour minute:(int)minute second:(int)second {
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.year = year;
+    components.month = month;
+    components.day = day;
+    components.hour = hour;
+    components.minute = minute;
+    components.second = second;
+    return [[NSCalendar currentCalendar] dateFromComponents:components];
+}
+
++ (NSDate *)dateWithYear:(int)year month:(int)month weekday:(int)weekday weekdayOrdinal:(int)weekdayOrdinal {
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.year = year;
+    components.month = month;
+    components.weekday = weekday;
+    components.weekdayOrdinal = weekdayOrdinal;
+    return [[NSCalendar currentCalendar] dateFromComponents:components];
+}
+
++ (NSDate *)dateFromString:(NSString *)string format:(NSString *)format {
+    if (!s_dateFormatter) {
+        s_dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    
+    [s_dateFormatter setDateFormat:format];
+    return [s_dateFormatter dateFromString:string];
+}
+
+- (int)numberOfDaysThisMonth {
+    NSRange range = [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
+    return range.length;
+}
+
+- (int)weekday {
+    return [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:self] weekday];
+    
+    //or
+    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSWeekdayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+}
+
+- (NSDate *)dateForZeroHour {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:self];
+    
+    return [calendar dateFromComponents:components];
+}
+
+- (NSDate *)dateForZeroHourByAddingDays:(int)days hours:(int)hours minutes:(int)minutes seconds:(int)seconds {
+    NSDate *zeroHourDate = [self dateForZeroHour];
+    int interval = days * SECS_PER_DAY + hours * SECS_PER_HOUR + minutes * SECS_PER_MINUTE + seconds;
+    return [zeroHourDate dateByAddingTimeInterval:interval];
+}
+
+
+- (NSString *)briefDescriptionTillNow {
+    NSCalendarUnit units = NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear;
+    NSDateComponents *components = [self diffComponents:units fromDate:[NSDate date]];
+    
+    NSLog(@"interval: %@", components);
+    
+    if (components.year < 0) {
+        return [NSString stringWithFormat:@"%d年前", -components.year];
+    } else if (components.month < 0) {
+        return [NSString stringWithFormat:@"%d月前", -components.month];
+    } else if (components.day < 0) {
+        return [NSString stringWithFormat:@"%d天前", -components.day];
+    } else if (components.hour < 0) {
+        return [NSString stringWithFormat:@"%d小时前", -components.hour];
+    } else if (components.minute < 0) {
+        return [NSString stringWithFormat:@"%d分钟前", -components.minute];
+    } else if (components.second < 0) {
+        return [NSString stringWithFormat:@"%d秒前", -components.second];
+    } else {
+        return @"刚刚";
+    }
+}
+
+- (NSString *)localizeDescription {
+    return [self dateStringWithFormat:STD_FORMAT];
+}
+
+- (NSString *)dateStringWithFormat:(NSString *)format {
+    if (!s_dateFormatter)
+        s_dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [s_dateFormatter setDateFormat:format];
+    return [s_dateFormatter stringFromDate:self];
+}
+
+
+- (NSDateComponents *)diffComponents:(NSCalendarUnit)unitFlags fromDate:(NSDate *)date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    return [calendar components:unitFlags fromDate:date toDate:self options:0];
+}
+
+- (int)diffDaysFromDate:(NSDate *)date {
+    NSDateComponents *components = [self diffComponents:NSCalendarUnitDay fromDate:date];
+    return components.day;
+}
+
+@end

@@ -1,0 +1,21 @@
+//
+//  NSObject+OCAddditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-12-3.
+//  Copyright (c) 2013年 KongKong. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface NSObject (OCAddditions)
+
+- (NSArray *)allAttributeKeys;
+
+- (BOOL)isDictionary;
+- (BOOL)isArray;
+- (BOOL)isString;
+- (BOOL)isNumber;
+- (BOOL)isButton;
+
+@end

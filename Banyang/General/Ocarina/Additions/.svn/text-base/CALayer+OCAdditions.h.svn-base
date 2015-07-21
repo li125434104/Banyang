@@ -1,0 +1,21 @@
+//
+//  CALayer+OCAdditions.h
+//  WeiXingZuo
+//
+//  Created by CAI on 13-9-6.
+//
+//
+
+#import <QuartzCore/QuartzCore.h>
+#import <Foundation/Foundation.h>
+
+@interface CALayer (OCAdditions)
+
+- (void)roundWithRadius:(CGFloat)radius;  //mutual exclusive with shadow
+- (void)addShadowWithOffset:(CGSize)offset;
+- (void)addShadowWithOffset:(CGSize)offset radius:(CGFloat)radius color:(UIColor *)color;
+
+- (UIImage *)renderedImageInRect:(CGRect)rect;
+- (UIImage *)renderedImageInPath:(UIBezierPath *)path;
+
+@end

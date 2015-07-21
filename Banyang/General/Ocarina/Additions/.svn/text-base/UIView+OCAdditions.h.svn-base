@@ -1,0 +1,79 @@
+//
+//  UIView+OCAdditions.h
+//  Ocarina
+//
+//  Created by CAI on 13-6-21.
+//  Copyright (c) 2013年 CAI. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIView (OCAdditions)
+
+@property (nonatomic, assign) CGFloat x;
+@property (nonatomic, assign) CGFloat y;
+@property (nonatomic, assign) CGFloat width;
+@property (nonatomic, assign) CGFloat height;
+@property (nonatomic, assign) CGPoint origin;
+@property (nonatomic, assign) CGSize size;
+@property (nonatomic, assign) CGFloat centerX;
+@property (nonatomic, assign) CGFloat centerY;
+
+@property (nonatomic, assign) CGSize boundsSize;
+@property (nonatomic, assign) CGFloat boundsWidth;
+@property (nonatomic, assign) CGFloat boundsHeight;
+
+@property (nonatomic, assign, readonly) CGFloat midX;
+@property (nonatomic, assign, readonly) CGFloat midY;
+
+@property (nonatomic, assign) CGFloat maxX;
+@property (nonatomic, assign) CGFloat maxY;
+
+@property (nonatomic, assign, readonly) CGPoint middlePoint;
+
+
++ (UIView *)roundsShadowViewWithImage:(UIImage *)image
+                               radius:(CGFloat)radius
+                         shadowOffset:(CGSize)offset;
+
++ (UIView *)roundsShadowViewWithImage:(UIImage *)image
+                               radius:(CGFloat)radius
+                         shadowOffset:(CGSize)offset
+                           shadowBlur:(CGFloat)blur
+                          shadowColor:(UIColor *)color;
+
+- (UITapGestureRecognizer *)addTapGestureWithTarget:(id)target action:(SEL)action;
+
++ (UIView *)tiledViewWithImage:(UIImage *)image;
++ (UIView *)stretchableViewWithImage:(UIImage *)image;
++ (UIView *)stretchableViewWithImage:(UIImage *)image centerRect:(CGRect)rect;
+
+- (void)alignHorizontalCenterForSubviews:(NSArray *)subviews padding:(CGFloat)padding;
+- (void)alignSubviewsHorizontalCenterWithPadding:(CGFloat)padding;
+
+- (void)fillContentsWithStretchableImage:(UIImage *)image centerRect:(CGRect)rect;
+
+- (void)widthToFit;
+- (void)widthToFitWithPadding:(CGFloat)padding minWidth:(CGFloat)minWidth;
+- (void)heightToFit;
+- (void)heightToFitWithPadding:(CGFloat)padding minHeight:(CGFloat)minHeight;
+
+- (void)allSubviewsHidden:(BOOL)hidden;
+- (void)removeAllSubviews;
+- (void)removeAllSubviewsWithClass:(Class)cls;
+- (UIView *)viewWithClass:(Class)c;
+
+- (void)recursiveEnumerateAllSubviews:(void(^)(UIView *view))block;
+
+- (UIImage *)renderedImage;
+- (UIImage *)renderedImageInRect:(CGRect)rect;
+- (UIImage *)renderedImageInPath:(UIBezierPath *)path;
+
+- (void)roundWithCornerRadius:(CGFloat)radius;
+- (void)roundToCircle;
+
+- (UIView *)deepCopy;
+
+- (void)startDissolveTransition:(CGFloat)duration;
+
+@end
